@@ -58,20 +58,36 @@ function game(){
     let computerScore = 0;
 
     for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Choose Rock, Paper or Scissors");
+        let playerSelection = prompt("Choose Rock, Paper or Scissors").toLowerCase();
         let computerSelection = getComputerChoice();
         console.log(playerSelection);
         console.log(computerSelection);
         
         let userResult = playRound(playerSelection, computerSelection);
         printResult(userResult, playerSelection, computerSelection);
-        //print user and computer choice
-        //announce winner
+
         // add score to winner
+        if (userResult == "win") {
+            playerScore++;
+        }
+        else if (userResult == "lose") {
+            computerScore++;
+        }
+
+        console.log(`Player = ${playerScore}`);
+        console.log(`Computer = ${computerScore}`);
     }
 
     // annouce winner with highest score
-
+    if (playerScore > computerScore) {
+        console.log(`You won! You beat the computer ${playerScore}-${computerScore}`);
+    }
+    else if (playerScore < computerScore) {
+        console.log(`You lost! The computer beat you ${computerScore}-${playerScore}`);
+    }
+    else {
+        console.log("Draw!");
+    }
 }
 
 
