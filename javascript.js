@@ -60,8 +60,8 @@ function game(){
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt("Choose Rock, Paper or Scissors").toLowerCase();
         let computerSelection = getComputerChoice();
-        console.log(playerSelection);
-        console.log(computerSelection);
+        console.log(`You chose: ${playerSelection}`);
+        console.log(`Computer chose: ${computerSelection}`);
         
         let userResult = playRound(playerSelection, computerSelection);
         printResult(userResult, playerSelection, computerSelection);
@@ -73,7 +73,7 @@ function game(){
         else if (userResult == "lose") {
             computerScore++;
         }
-
+        
         console.log(`Player = ${playerScore}`);
         console.log(`Computer = ${computerScore}`);
     }
