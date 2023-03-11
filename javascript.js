@@ -2,15 +2,12 @@ function getComputerChoice(){
     let computerChoice = Math.floor(Math.random() * 3) + 1;
 
     if (computerChoice == 1) {
-        console.log("rock");
         return "rock";
     }
     else if (computerChoice == 2) {
-        console.log("paper");
         return "paper";
     }
     else {
-        console.log("scissors");
         return "scissors";
     }
 }
@@ -18,29 +15,64 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
-        return `Draw! You both picked ${computerSelection}`;
+        return "draw";
     }
     else if (playerSelection == "rock" && computerSelection == "paper"){
-        return "You lose! Paper beats Rock";
+        return "lose";
     }
     else if (playerSelection == "rock" && computerSelection == "scissors") {
-        return "You win! Rock beats Scissors"
+        return "win";
     }
     else if (playerSelection == "paper" && computerSelection == "rock"){
-        return "You win! Paper beats Rock";
+        return "win";
     }
     else if (playerSelection == "paper" && computerSelection == "scissors") {
-        return "You lose! Scissors beats Paper"
+        return "lose";
     }
     else if (playerSelection == "scissors" && computerSelection == "rock"){
-        return "You lose! Rock beats Scissors";
+        return "lose";
     }
     else if (playerSelection == "scissors" && computerSelection == "paper") {
-        return "You win! Scissors beats Paper"
+        return "win";
     }
 }
 
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice().toLowerCase();
-console.log(playRound(playerSelection, computerSelection));
+function printResult(userResult, playerSelection, computerSelection) {
+    if (userResult == "draw") {
+        console.log(`Draw! You both picked ${playerSelection}`)
+    }
+    else if (userResult == "win") {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+    }
+    else {
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+    }
+}
+
+
+
+
+function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Choose Rock, Paper or Scissors");
+        let computerSelection = getComputerChoice();
+        console.log(playerSelection);
+        console.log(computerSelection);
+        
+        let userResult = playRound(playerSelection, computerSelection);
+        printResult(userResult, playerSelection, computerSelection);
+        //print user and computer choice
+        //announce winner
+        // add score to winner
+    }
+
+    // annouce winner with highest score
+
+}
+
+
+game();
